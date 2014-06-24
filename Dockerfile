@@ -7,7 +7,7 @@ MAINTAINER Andrea Grandi <andrea@thisisglow.com>
 # Install basic Ubuntu packages for development
 
 RUN apt-get update -y
-RUN apt-get install -y python-dev build-essential python-pip libcurl4-gnutls-dev rabbitmq-server wget
+RUN apt-get install -y python-dev build-essential python-pip libcurl4-gnutls-dev rabbitmq-server wget python2.7-dev
 
 # PostgreSQL
 
@@ -35,10 +35,9 @@ RUN python setup.py build install
 # Manual installation of some legacy Python libraries from pip
 RUN pip install --allow-external PIL --allow-unverified PIL PIL==1.1.7
 RUN pip install --allow-external argparse --allow-unverified argparse argparse==1.2.1
-RUN pip install --allow-external PyXML --allow-unverified PyXML PyXML
 
 # Install all the required Python packages from pip repository
 
-#ADD requirements.txt /opt/glowmachine/
-#WORKDIR /opt/glowmachine/
-#RUN pip install -r requirements.txt
+ADD requirements.txt /opt/glowmachine/
+WORKDIR /opt/glowmachine/
+RUN pip install -r requirements.txt
