@@ -32,6 +32,11 @@ RUN tar xzvf dfa_api_python_2.3.1.tar.gz
 WORKDIR /tmp/dfa_api_python_2.3.1/
 RUN python setup.py build install
 
+# Manual installation of some legacy Python libraries from pip
+RUN pip install --allow-external PIL --allow-unverified PIL PIL==1.1.7
+RUN pip install --allow-external argparse --allow-unverified argparse argparse==1.2.1
+RUN pip install --allow-external PyXML --allow-unverified PyXML PyXML
+
 # Install all the required Python packages from pip repository
 
 #ADD requirements.txt /opt/glowmachine/
