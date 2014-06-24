@@ -28,6 +28,7 @@ RUN echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
 RUN apt-get update
 RUN apt-get install -y -q mongodb-org
 RUN mkdir -p /data/db
+EXPOSE 27017
 
 # Google API libraries
 
