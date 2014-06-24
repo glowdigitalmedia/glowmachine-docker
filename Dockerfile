@@ -16,6 +16,9 @@ USER postgres
 RUN  /etc/init.d/postgresql start &&\
     psql --command "CREATE USER glowmachine WITH SUPERUSER PASSWORD 'glowmachine';" &&\
     createdb -O glowmachine glowmachine
+RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.conf
+RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
+EXPOSE 5432
 
 # Google API libraries
 
@@ -41,3 +44,9 @@ RUN pip install --allow-external argparse --allow-unverified argparse argparse==
 ADD requirements.txt /opt/glowmachine/
 WORKDIR /opt/glowmachine/
 RUN pip install -r requirements.txt
+
+# Startup script
+
+ADD run.sh /root/
+RUN chmod +x /root/run.sh
+ENTRYPOINT ["/root/run.sh"]
