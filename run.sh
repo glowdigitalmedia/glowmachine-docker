@@ -1,4 +1,4 @@
 #!/bin/bash
 /etc/init.d/postgresql start
-mongod &
+/etc/init.d/mongod start
 /bin/bash
