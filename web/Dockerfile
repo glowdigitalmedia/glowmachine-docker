@@ -32,3 +32,5 @@ RUN pip install --allow-external argparse --allow-unverified argparse argparse==
 ADD requirements.txt /opt/glowmachine/
 WORKDIR /opt/glowmachine/
 RUN pip install -r requirements.txt
+
+EXPOSE 8000
