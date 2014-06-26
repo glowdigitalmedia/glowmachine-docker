@@ -7,7 +7,7 @@ MAINTAINER Andrea Grandi <andrea@thisisglow.com>
 # Install basic Ubuntu packages for development
 
 RUN apt-get update -y
-RUN apt-get install -y python-dev build-essential python-pip libcurl4-gnutls-dev rabbitmq-server wget python2.7-dev
+RUN apt-get install -y python-dev build-essential python-pip libcurl4-gnutls-dev rabbitmq-server wget python2.7-dev libpq-dev
 
 # Google API libraries
 
