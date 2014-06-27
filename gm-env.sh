@@ -28,6 +28,12 @@ case "$1" in
         echo "Stopping PostgreSQL container..."
         docker rm postgres
         ;;
+    setup)
+        echo "Setting up MongoDB data container..."
+        docker run -d -v /data/db --name mongodata andreagrandi/glowmachine-dev:ubuntu /bin/bash
+        echo "Setting up PostgreSQL data container..."
+        docker run -d -v /var/lib/postgresql/9.3/main --name postgresdata andreagrandi/glowmachine-dev:ubuntu /bin/bash
+        ;;
 *)
     echo $"Usage: $0 {start|stop}"
     exit 1
