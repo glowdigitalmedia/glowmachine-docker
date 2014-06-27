@@ -35,7 +35,7 @@ case "$1" in
         docker run -d -v /var/lib/postgresql/9.3/main --name postgresdata andreagrandi/glowmachine-dev:ubuntu /bin/bash
         ;;
 *)
-    echo $"Usage: $0 {start|stop}"
+    echo $"Usage: $0 {start|stop|setup}"
     exit 1
 esac
 exit 0
