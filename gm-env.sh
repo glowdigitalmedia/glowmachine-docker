@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Create a folder that containers will use to store persistent data
-mkdir -p $HOME/gm-data/
-
 # Start MongoDB
-docker run -d -P -v $HOME/gm-data/mongo/:/data/db andreagrandi/glowmachine-dev:mongo
+docker run -d -P --volumes-from mongodata andreagrandi/glowmachine-dev:mongo
 
 # Start PostgreSQL
-docker run -d -P -v $HOME/gm-data/postgresql/:/var/lib/postgresql/9.3/main andreagrandi/glowmachine-dev:postgresql
+docker run -d -P --volumes-from postgresdata andreagrandi/glowmachine-dev:postgresql
 
 # Start web stack
 docker run -i -P -t -v `pwd`:/glowcode andreagrandi/glowmachine-dev:web /bin/bash
