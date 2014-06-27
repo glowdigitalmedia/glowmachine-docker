@@ -12,7 +12,7 @@ case "$1" in
 
         # Start web stack
         echo "Starting web container..."
-        docker run --name web --link mongo:mongo -i -P -t -v `pwd`:/glowcode andreagrandi/glowmachine-dev:web /bin/bash
+        docker run --name web --link mongo:mongo --link postgres:postgres -i -P -t -v `pwd`:/glowcode andreagrandi/glowmachine-dev:web /bin/bash
         ;;
     stop)
         echo "Stopping web container..."
