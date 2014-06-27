@@ -33,4 +33,15 @@ ADD requirements.txt /opt/glowmachine/
 WORKDIR /opt/glowmachine/
 RUN pip install -r requirements.txt
 
+# Google Analytics API
+WORKDIR /tmp/
+RUN wget https://gdata-python-client.googlecode.com/files/gdata-2.0.18.tar.gz
+RUN tar -xvzf gdata-2.0.18.tar.gz
+WORKDIR /tmp/gdata-2.0.18
+RUN python setup.py install
+
+#
+RUN mkdir -p /glowcode
+WORKDIR /glowcode
+
 EXPOSE 8000
