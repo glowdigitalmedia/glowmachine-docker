@@ -76,7 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "web" do |wc|
+  config.vm.define "web", primary: true do |wc|
     wc.vm.provider "docker" do |d|
       # Image & build
       d.build_dir = "web"
