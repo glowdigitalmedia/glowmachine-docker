@@ -43,4 +43,8 @@ RUN python setup.py install
 #
 RUN mkdir -p /root/glowcode
 
+# TODO: Dirty fix: tests do not run without /var/log/glowmachine
+# created in advance
+RUN mkdir -p /var/log/glowmachine
+
 EXPOSE 8000
