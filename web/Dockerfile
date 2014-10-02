@@ -1,6 +1,6 @@
 # This Dockerfile builds a complete development ennvironment for GlowMachine
 
-FROM ubuntu:14.04
+FROM phusion/baseimage:0.9.13
 
 MAINTAINER Andrea Grandi <andrea@thisisglow.com>
 
@@ -41,7 +41,6 @@ WORKDIR /tmp/gdata-2.0.18
 RUN python setup.py install
 
 #
-RUN mkdir -p /glowcode
-WORKDIR /glowcode
+RUN mkdir -p /root/glowcode
 
 EXPOSE 8000

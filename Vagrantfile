@@ -84,17 +84,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       
       # Container & run
       d.name = "web"
-      d.create_args = ["-i", "-t"]
-      d.cmd = ["/bin/bash"]
+      d.cmd = ["/sbin/my_init", "--enable-insecure-key"]
 
       d.ports = ["8000:8000"]
       d.link "postgres:postgres"
       d.link "mongo:mongo"
       
       d.remains_running = true
+      d.has_ssh = true
     end
-    wc.vm.synced_folder ".", "/glowcode"
+    wc.vm.synced_folder "../glowmachine", "/root/glowcode"
   end
+
+  config.ssh.username = "root"
+  config.ssh.private_key_path = "insecure_key"
 
 end
 
