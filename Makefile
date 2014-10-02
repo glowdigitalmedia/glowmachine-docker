@@ -1,6 +1,7 @@
 
 .PHONY: rm rm-all rm-postgresql rm-mongo rm-web rm-postgresdata rm-mongodata rm-database
 .PHONY: rmi rmi-all rmi-postgresql rmi-mongo rmi-web rmi-database
+.PHONY: test
 
 # Build images
 # TODO
@@ -50,3 +51,7 @@ rmi-database:
 
 # Stop containers
 # TODO
+
+# Misc stuff
+test:
+	vagrant ssh -c "(cd glowcode/glowconsole; ./manage.py test --settings=settings_test)"
