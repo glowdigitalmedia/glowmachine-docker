@@ -25,7 +25,7 @@ Quick start
 
 To start isolated environment fire:
 ```
-$ vagrant up --provider=docker
+$ vagrant up --provider=docker --no-parallel
 ```
 You must supply `--provider=docker` key or make sure that environment variable `VAGRANT_DEFAULT_PROVIDER` is set to `docker`. It takes for a while to build all containers upon first start.
 
