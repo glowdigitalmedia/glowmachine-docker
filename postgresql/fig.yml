@@ -9,4 +9,4 @@ db:
   volumes_from:
     - dbdata
   ports:
-    - "5432"
+    - "49154:5432"
