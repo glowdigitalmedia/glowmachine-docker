@@ -39,6 +39,8 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 # Expose the PostgreSQL port
 EXPOSE 5432
 
+RUN mkdir -p /var/run/postgresql && chown -R postgres /var/run/postgresql
+
 # Add VOLUMEs to allow backup of config, logs and databases
 VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
