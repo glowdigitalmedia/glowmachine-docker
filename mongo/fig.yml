@@ -1,0 +1,12 @@
+mongodbdata:
+  image: glow/mongodb:latest
+  volumes:
+    - /data/db
+  command: true
+
+mongodb:
+  image: glow/mongodb:latest
+  volumes_from:
+    - mongodbdata
+  ports:
+    - "49155:27017"
