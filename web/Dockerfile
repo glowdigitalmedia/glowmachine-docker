@@ -1,13 +1,13 @@
 # This Dockerfile builds a complete development ennvironment for GlowMachine
 
-FROM ubuntu:14.04
+FROM phusion/baseimage:0.9.13
 
 MAINTAINER Andrea Grandi <andrea@thisisglow.com>
 
 # Install basic Ubuntu packages for development
 
 RUN apt-get update -y
-RUN apt-get install -y python-dev build-essential python-pip libcurl4-gnutls-dev rabbitmq-server wget python2.7-dev libpq-dev
+RUN apt-get install -y python-dev build-essential python-pip libcurl4-gnutls-dev rabbitmq-server wget python2.7-dev libpq-dev git
 
 # Google API libraries
 
@@ -41,7 +41,10 @@ WORKDIR /tmp/gdata-2.0.18
 RUN python setup.py install
 
 #
-RUN mkdir -p /glowcode
-WORKDIR /glowcode
+RUN mkdir -p /root/glowcode
+
+# TODO: Dirty fix: tests do not run without /var/log/glowmachine
+# created in advance
+RUN mkdir -p /var/log/glowmachine
 
 EXPOSE 8000
