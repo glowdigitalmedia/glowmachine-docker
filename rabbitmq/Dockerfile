@@ -2,14 +2,11 @@ FROM ubuntu:14.04
 
 MAINTAINER Andrea Grandi <andrea@thisisglow.com>
 
+# Install PGP key
+RUN apt-key adv --keyserver pool.sks-keyservers.net --recv-keys F78372A06FF50C80464FC1B4F7B8CEA6056E8E56
+
 # Add RabbitMQ repository
 RUN echo "deb http://www.rabbitmq.com/debian/ testing main" >> /etc/apt/sources.list
-
-# Install curl needed to get the PGP key
-RUN apt-get install -y curl
-
-# Add RabbitMQ PGP key
-RUN curl http://www.rabbitmq.com/rabbitmq-signing-key-public.asc | sudo apt-key add -
 
 # Install RabbitMQ
 RUN apt-get update -y && apt-get install -y rabbitmq-server
@@ -28,4 +25,4 @@ RUN service rabbitmq-server start && \
 EXPOSE 5672
 EXPOSE 15672
 
-CMD ['rabbitmq-server']
+CMD ["rabbitmq-server"]
