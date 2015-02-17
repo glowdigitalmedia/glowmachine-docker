@@ -14,15 +14,10 @@ RUN apt-get update -y && apt-get install -y rabbitmq-server
 # Enable RabbitMQ Management Console
 RUN rabbitmq-plugins enable rabbitmq_management
 
-# Configure default queue and user
-# Note: we need to start the service during Docker image creation to be able to call rabbitmqctl
-RUN service rabbitmq-server start && \
-    rabbitmqctl add_vhost glowmachine && \
-    rabbitmqctl add_user glowmachine glowcon99 && \
-    rabbitmqctl set_permissions -p glowmachine  glowmachine ".*" ".*" ".*" && \
-    service rabbitmq-server stop
+COPY run.sh /root/run.sh
+RUN chmod +x /root/run.sh
 
 EXPOSE 5672
 EXPOSE 15672
 
-CMD ["rabbitmq-server"]
+CMD ["/root/run.sh"]
