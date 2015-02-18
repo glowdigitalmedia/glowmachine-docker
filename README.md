@@ -4,6 +4,8 @@
 
 Dockerfile to create a container with all the environment needed for development of the GlowMachine.
 
+**Note:** images for PostgreSQL, MongoDB, Memcached and RabbitMQ will be automatically rebuilt by docker.io hub and pushed to glow/\<servicename\>:latest
+
 ## Salt
 Install salt using the [salt bootstrap][salt-bootstrap] script.
 
