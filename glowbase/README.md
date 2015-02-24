@@ -8,3 +8,8 @@ To rebuild the image:
 To run the service:
 
     fig up
+
+
+To push the image:
+
+    docker push glow/glowbase:latest
